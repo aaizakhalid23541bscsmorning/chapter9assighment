@@ -1,0 +1,484 @@
+9.1 
+#include <stdio.h>
+
+void show(void);
+
+int main() {
+    show();
+    return 0;
+}
+
+void show(void) {
+    printf("Programming makes life interesting.\n");
+}
+ 
+9.2
+#include <stdio.h>
+
+// Function prototype
+void displayMax(int a, int b);
+
+int main() {
+    int num1, num2;
+
+    // Input two numbers
+    printf("Enter the first number: ");
+    scanf("%d", &num1);
+
+    printf("Enter the second number: ");
+    scanf("%d", &num2);
+
+    // Call the function to display the maximum
+    displayMax(num1, num2);
+
+    return 0;
+}
+
+// Function to display the maximum of two numbers
+void displayMax(int a, int b) {
+    if (a > b) {
+        printf("The maximum number is: %d\n", a);
+    } else if (b > a) {
+        printf("The maximum number is: %d\n", b);
+    } else {
+        printf("Both numbers are equal.\n");
+    }
+}
+9.3
+  #include <stdio.h>
+
+// Function prototype
+void printTable(int num);
+
+int main() {
+    int number;
+
+    // Input a number
+    printf("Enter a number: ");
+    scanf("%d", &number);
+
+    // Call the function to print the table of the number
+    printTable(number);
+
+    return 0;
+}
+
+// Function to print the multiplication table of the given number
+void printTable(int num) {
+    printf("Multiplication table for %d:\n", num);
+    for (int i = 1; i <= 10; i++) {
+        printf("%d x %d = %d\n", num, i, num * i);
+    }
+}
+9.4
+  #include <iostream>  // Use the standard iostream library
+
+// Function prototype
+void value(int x);
+
+int main() {
+    int x;
+
+    // Input a number
+    std::cout << "Enter an integer: ";
+    std::cin >> x;
+
+    // Call the function to display the predecessor and successor
+    value(x);
+
+    return 0;
+}
+
+// Function to display the predecessor and successor of the given number
+void value(int x) {
+    int p = x - 1;  // Predecessor
+    int n = x + 1;  // Successor
+
+    std::cout << "The number before " << x << " is " << p << std::endl;
+    std::cout << "The number after " << x << " is " << n << std::endl;
+}
+9.5
+  #include <stdio.h>
+
+// Function prototype
+void factorial(int n);
+
+int main() {
+    int num;
+
+    // Input a number
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    // Call the function to display the factorial
+    factorial(num);
+
+    return 0;
+}
+
+// Function to calculate and display the factorial of a number
+void factorial(int n) {
+    if (n < 0) {
+        printf("Factorial is not defined for negative numbers.\n");
+        return;
+    }
+
+    long long fact = 1; // Use long long to handle larger factorials
+    for (int i = 1; i <= n; i++) {
+        fact *= i;
+    }
+    printf("Factorial of %d is %lld\n", n, fact);
+}
+9.6
+  #include <stdio.h>
+#include <stdbool.h> // For using the bool type
+
+// Function prototype
+bool isPrime(int n);
+
+int main() {
+    int num;
+
+    // Input a number
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    // Check if the number is prime
+    if (isPrime(num)) {
+        printf("%d is a prime number.\n", num);
+    } else {
+        printf("%d is not a prime number.\n", num);
+    }
+
+    return 0;
+}
+
+// Function to check if a number is prime
+bool isPrime(int n) {
+    if (n <= 1) return false; // Numbers less than or equal to 1 are not prime
+    if (n <= 3) return true;  // 2 and 3 are prime numbers
+
+    if (n % 2 == 0 || n % 3 == 0) return false; // Eliminate multiples of 2 and 3
+
+    // Check for factors from 5 to sqrt(n)
+    for (int i = 5; i * i <= n; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0) return false;
+    }
+
+    return true;
+}
+
+9.7
+
+  #include <stdio.h>
+
+// Function prototype
+void cal(int a, int b, char op);
+
+int main() {
+    int x, y;
+    char op;
+
+    // Input first number, operator, and second number
+    printf("Enter first number, operator, and second number: ");
+    scanf("%d %c %d", &x, &op, &y);
+
+    // Call the function to perform the calculation
+    cal(x, y, op);
+
+    return 0;
+}
+
+// Function to perform arithmetic operations
+void cal(int a, int b, char op) {
+    switch(op) {
+        case '+':
+            printf("%d + %d = %d\n", a, b, (a + b));
+            break;
+        case '-':
+            printf("%d - %d = %d\n", a, b, (a - b));
+            break;
+        case '*':
+            printf("%d * %d = %d\n", a, b, (a * b));
+            break;
+        case '/':
+            if (b != 0) {
+                printf("%d / %d = %d\n", a, b, (a / b));
+            } else {
+                printf("Division by zero is not allowed!\n");
+            }
+            break;
+        case '%':
+            if (b != 0) {
+                printf("%d %% %d = %d\n", a, b, (a % b));
+            } else {
+                printf("Division by zero is not allowed!\n");
+            }
+            break;
+        default:
+            printf("Invalid operator!\n");
+            break;
+    }
+}
+9.8
+  #include <stdio.h>
+
+// Function prototype
+void shape(int n, char c);
+
+int main() {
+    int num;
+    char ch;
+
+    // Input size and character for shape
+    printf("Enter the size of the shape: ");
+    scanf("%d", &num);
+    printf("Enter a character: ");
+    scanf(" %c", &ch); // Note the space before %c to consume any newline character
+
+    // Call the function to print the shape
+    shape(num, ch);
+
+    return 0;
+}
+
+// Function to print a square shape
+void shape(int n, char c) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%c", c);
+        }
+        printf("\n");
+    }
+}
+
+9.9
+
+#include <stdio.h>
+
+// Function prototype
+void swap(int *x, int *y);
+
+int main() {
+    int a, b;
+
+    // Input values
+    printf("Enter an integer for a: ");
+    scanf("%d", &a);
+    printf("Enter an integer for b: ");
+    scanf("%d", &b);
+
+    // Display values before swapping
+    printf("Values before swapping:\n");
+    printf("a = %d\n", a);
+    printf("b = %d\n", b);
+
+    // Swapping the values
+    printf("Swapping the values...\n");
+    swap(&a, &b);
+
+    // Display values after swapping
+    printf("Values after swapping:\n");
+    printf("a = %d\n", a);
+    printf("b = %d\n", b);
+
+    return 0;
+}
+
+// Function to swap values of two integers using pointers
+void swap(int *x, int *y) {
+    int temp;
+    temp = *x; // Store value pointed to by x in temp
+    *x = *y;   // Assign value pointed to by y to value pointed to by x
+    *y = temp; // Assign value stored in temp to value pointed to by y
+}
+
+9.10
+
+  #include <stdio.h> // For input and output functions
+
+// Function prototype
+char grade(int m);
+
+int main() {
+    int marks;
+    char g;
+
+    // Input marks
+    printf("Enter marks: ");
+    scanf("%d", &marks);
+
+    // Get the grade based on marks
+    g = grade(marks);
+
+    // Display the grade
+    printf("Your grade is %c\n", g);
+
+    return 0;
+}
+
+// Function to determine the grade based on marks
+char grade(int m) {
+    if (m > 80) {
+        return 'A';
+    } else if (m > 60) {
+        return 'B';
+    } else if (m > 40) {
+        return 'C';
+    } else {
+        return 'F';
+    }
+}
+9.11
+  #include <stdio.h> // For input and output functions
+
+// Function prototype
+int is_multiple(int a, int b);
+
+int main() {
+    int x, y;
+    int result;
+
+    // Loop to handle multiple pairs of integers
+    for (int i = 1; i <= 5; i++) {
+        printf("Enter a pair of integers: ");
+        scanf("%d %d", &x, &y);
+
+        // Check if y is a multiple of x
+        result = is_multiple(x, y);
+
+        // Display the result
+        if (result == 1) {
+            printf("%d is a multiple of %d.\n", y, x);
+        } else {
+            printf("%d is not a multiple of %d.\n", y, x);
+        }
+    }
+
+    return 0;
+}
+
+// Function to determine if b is a multiple of a
+int is_multiple(int a, int b) {
+    if (b % a == 0) {
+        return 1; // true: b is a multiple of a
+    } else {
+        return 0; // false: b is not a multiple of a
+    }
+}
+9.12
+
+  #include <stdio.h> // For input and output functions
+
+// Function prototype
+float area(int b, int h);
+
+int main() {
+    int base, height;
+    float ar;
+
+    // Input base and height
+    printf("Enter base: ");
+    scanf("%d", &base);
+    printf("Enter height: ");
+    scanf("%d", &height);
+
+    // Calculate the area of the triangle
+    ar = area(base, height);
+
+    // Display the area
+    printf("Area of the triangle is %.2f\n", ar);
+
+    return 0;
+}
+
+// Function to calculate the area of a triangle
+float area(int b, int h) {
+    return 0.5 * b * h;
+}
+9.13
+
+  #include <stdio.h> // For input and output functions
+
+// Function prototype
+int gcd(int x, int y);
+
+int main() {
+    int a, b;
+
+    // Input two integers
+    printf("Enter an integer: ");
+    scanf("%d", &a);
+    printf("Enter another integer: ");
+    scanf("%d", &b);
+
+    // Calculate and display the greatest common divisor
+    printf("Greatest common divisor is %d\n", gcd(a, b));
+
+    return 0;
+}
+
+// Function to find the greatest common divisor of x and y
+int gcd(int x, int y) {
+    int g, i;
+    int n;
+
+    // Determine the smaller of the two numbers
+    if (x < y) {
+        n = x;
+    } else {
+        n = y;
+    }
+
+    // Find the greatest common divisor
+    for (i = n; i >= 1; i--) {
+        if (x % i == 0 && y % i == 0) {
+            g = i;
+            break;
+        }
+    }
+
+    return g;
+}
+
+9.19
+
+  #include <stdio.h> // For input and output functions
+
+// Function prototype
+int count_even(int arr[], int size);
+
+int main() {
+    int num[5];
+    int count;
+
+    // Input five integers
+    printf("Enter five integers:\n");
+    for (int i = 0; i < 5; i++) {
+        scanf("%d", &num[i]);
+    }
+
+    // Count even numbers in the array
+    count = count_even(num, 5);
+
+    // Display the result
+    printf("The array contains %d even numbers.\n", count);
+
+    return 0;
+}
+
+// Function to count even numbers in an array
+int count_even(int arr[], int size) {
+    int count = 0;
+
+    // Loop through the array and count even numbers
+    for (int i = 0; i < size; i++) {
+        if (arr[i] % 2 == 0) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+
